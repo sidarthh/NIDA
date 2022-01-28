@@ -1,0 +1,87 @@
+
+import React from 'react'
+import { View, Text } from 'react-native'
+import { StyledButton,ButtonText, StyledContainer, InnerContainer,SubTitle } from '../components/Styles'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+import ContactUs from './ContactUs'
+import Venues from './Venues'
+import Login from './Login'
+
+const Welcome = ({navigation,route}) => {
+    const {name,email} = route.params;
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name="Profile"  component={Profile}/>
+            <Tab.Screen name="Venues" component={Venues} />
+            <Tab.Screen name="ContactUs" component={ContactUs} />
+        </Tab.Navigator>
+        
+        <StyledContainer>
+            <InnerContainer>
+                <SubTitle>WELCOME TO NIDA,{name}</SubTitle>
+
+                <StyledButton onPress={()=>navigation.navigate("Login")}>
+                    <ButtonText>
+                        LOGOUT
+                    </ButtonText>
+
+
+                </StyledButton>
+            </InnerContainer>
+            
+            <Tab.Screen name="Home"  component={Login}/>
+            <Tab.Screen name="Venues" component={Venues} />
+            <Tab.Screen name="ContactUs" component={ContactUs} />
+
+            
+            
+
+</StyledContainer>
+        
+        
+    )
+}
+
+export default Welcome
+
+<Formik
+                    initialValues={{gender:""}}
+                    onSubmit={(values) =>{
+                        console.log(values);
+                        
+                    }}
+                >{({handleChange,handleBlur,handleSubmit,values,isSubmitting}) =>(<StyledFormArea>
+                    <RadioButton.Group
+                     onValueChange={handleChange('gender')}
+                     value={values.gender}
+                     >
+                        <View>
+                            <Text>Male</Text>
+                            <RadioButton value='M'></RadioButton>
+                        </View>
+                        <View>
+                            <Text>Female</Text>
+                            <RadioButton value='F'></RadioButton>
+                        </View>
+                    </RadioButton.Group>
+                    <MsgBox>...</MsgBox>
+                    
+                    
+                    <StyledButton onPress={handleSubmit}>
+                        <ButtonText>Submit</ButtonText>
+                    </StyledButton>
+                    
+                    
+                    
+                    
+                    <Line />
+
+                    
+                    
+                </StyledFormArea>
+                )}
+
+                </Formik>
